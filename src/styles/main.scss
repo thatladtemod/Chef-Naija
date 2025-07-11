@@ -38,69 +38,93 @@ header {
   }
 }
 
-section {
+main {
+  width: 100%;
+
+  section {
+    @include mixins.flex-center;
+    flex-direction: column;
+    width: 100%;
+
+    .intro {
+      margin: 2rem;
+      width: 80%;
+      padding: 2rem;
+
+      &-heading {
+        font-weight: map-get(variables.$font-weights, bold);
+        @include mixins.gradient-text;
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      &-description {
+        font-size: 1.1rem;
+        text-align: center;
+        color: variables.$text-color;
+        font-weight: map-get(variables.$font-weights, bold);
+      }
+    }
+
+    .form {
+      @include mixins.flex-center;
+      width: 80%;
+      gap: 8px;
+      height: 38px;
+
+      &-input {
+        flex-grow: 1;
+        min-width: 10rem;
+        max-width: 16rem;
+        height: 100%;
+        padding: 1rem;
+        border: 2px solid variables.$secondary-color;
+        outline: none;
+        border-radius: .5rem;
+      }
+
+      &-button {
+        width: 8rem;
+        height: 100%;
+        border: none;
+        border-radius: .5rem;
+        color: variables.$bg-color;
+        background: variables.$primary-color;
+        cursor: pointer;
+        @include mixins.all-transition;
+
+        &:hover {
+          background: variables.$secondary-color;
+        }
+
+        &:active {
+          background-color: variables.$accent-color;
+        }
+      }
+    } 
+  }
+}
+
+footer {
   @include mixins.flex-center;
   flex-direction: column;
   width: 100%;
+  height: 5rem;
+  background-color: variables.$bg-color;
+  position: fixed;
+  bottom: 0;
 
-  .intro {
-    margin: 2rem;
+  .rule {
+    border: 1px solid variables.$primary-color;
     width: 80%;
-    padding: 2rem;
-
-    &-heading {
-      font-weight: map-get(variables.$font-weights, bold);
-      background: linear-gradient(90deg, variables.$primary-color, variables.$accent-color);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent; 
-      font-size: 3rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    &-description {
-      font-size: 1.2rem;
-      text-align: center;
-      color: variables.$text-color;
-      font-weight: map-get(variables.$font-weights, bold);
-    }
+    margin-bottom: 1rem;
   }
 
-  .form {
-    @include mixins.flex-center;
+  .footer-message {
     width: 80%;
-    gap: 8px;
-    height: 38px;
-
-    &-input {
-      flex-grow: 1;
-      min-width: 10rem;
-      max-width: 16rem;
-      height: 100%;
-      padding: 1rem;
-      border: 2px solid variables.$secondary-color;
-      outline: none;
-      border-radius: .5rem;
-    }
-
-    &-button {
-      width: 8rem;
-      height: 100%;
-      border: none;
-      border-radius: .5rem;
-      color: variables.$bg-color;
-      background: variables.$primary-color;
-      cursor: pointer;
-      @include mixins.all-transition;
-
-      &:hover {
-        background: variables.$secondary-color;
-      }
-
-      &:active {
-        background-color: variables.$accent-color;
-      }
-    }
+    text-align: center;
+    color: variables.$text-color;
+    font-weight: map-get(variables.$font-weights, bold);
   }
 }

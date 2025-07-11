@@ -1,3 +1,4 @@
+@use "./variables";
 // Centered Component Mixin
 
 @mixin flex-center {
@@ -10,4 +11,23 @@
 
 @mixin all-transition {
     transition: all .3s ease-in;
+}
+
+// Animation Mixin
+
+@mixin gradient-text {
+    background: linear-gradient(90deg, variables.$primary-color, variables.$accent-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gradient-move .3s ease-in infinite;
+}
+
+@keyframes gradient-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 50% 100%;
+    }
 }
