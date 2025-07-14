@@ -6,7 +6,7 @@ export default function Hero() {
   }
 
   return (
-    <section>
+    <section className="hero">
       <div className="intro">
         <h1 className="intro-heading">Discover Authentic Nigerian Flavours</h1>
         <p className="intro-description">
