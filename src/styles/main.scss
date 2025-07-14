@@ -66,6 +66,10 @@ main {
         color: variables.$text-color;
         font-weight: map-get(variables.$font-weights, bold);
       }
+
+      @media (max-width: 28.75rem) {
+        padding: 0;
+      }
     }
 
     .form {
@@ -128,7 +132,7 @@ footer {
     font-weight: map-get(variables.$font-weights, bold);
   }
 
-  @media (min-width: 590px) {
+  @media (min-width: 22.5rem) {
     position: fixed;
   }
 }
