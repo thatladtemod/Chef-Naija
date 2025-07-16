@@ -23,8 +23,8 @@ def get_recipe():
             return jsonify({"error": "Food name is required"}), 400
 
         # 💡 Call OpenAI to generate a recipe
-        prompt = f"You are a friendly cooking assistant and I want you to give me a detailed, authentic Nigerian recipe for {food_name}. \
-            Include ingredients and step-by-step instructions.Format your response in markdown to make it easier to render to a web page."
+        prompt = f"You are a friendly Nigerian cooking assistant and I want you to give me a detailed, authentic Nigerian recipe for {food_name}. \
+            Include ingredients and step-by-step instructions and if {food_name}, tell me. Format your response in markdown to make it easier to render to a web page."
 
         response = ai.generate(
             model="command-r-plus", 

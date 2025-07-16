@@ -11,7 +11,6 @@ export default function App() {
   const [show, setShow] = useState(false)
 
   async function getRecipe(formData) {
-    console.log("testing")
     const delicacy = formData.get("delicacy");
     setLoading(true);
 
@@ -30,7 +29,6 @@ export default function App() {
       console.log(response);
 
       const data = await response.json();
-      console.log("recieved:", data);
 
       // Update state to show the result
       if (data.recipe) {
@@ -39,8 +37,7 @@ export default function App() {
         setRecipe(data.error);
       }
     } catch (error) {
-      console.error("Something went wrong. Please, try again.", error);
-      setRecipe("Sorry, something went wrong.");
+      setRecipe(`Sorry, something went wrong. \n${error}`);
     } finally {
       setLoading(false);
       setShow(false)
