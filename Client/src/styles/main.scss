@@ -2,6 +2,10 @@
 @use "./mixins" as mixins;
 @import "./reset";
 
+body {
+  font-family: variables.$font-family;
+}
+
 header {
   @include mixins.flex-center;
   position: sticky;
@@ -40,6 +44,7 @@ header {
 
 main {
   width: 100%;
+  bottom: 3rem;
 
   .hero {
     @include mixins.flex-center;
@@ -109,6 +114,57 @@ main {
       }
     } 
   }
+
+  .recipe {
+    padding: 2rem;
+    @include mixins.grid-center;
+
+    &-container{
+      @include mixins.flex-center;
+      flex-direction: column;
+      width: 75%;
+      background-color: darken(variables.$bg-color, 10%);
+      padding: 1.5rem;
+      border: 2px double variables.$secondary-color;
+      border-radius: .5rem;
+
+      
+      h1 {
+        color: variables.$secondary-color;
+        font-weight: map-get(variables.$font-weights, bold);
+        font-size: 2rem;
+        text-decoration: underline;
+        text-align: center;
+        margin-bottom: .5rem;
+      }
+
+      h2 {
+        color: variables.$accent-color;
+        margin: .5rem 0;
+        font-size: 1.7rem;
+        text-align: center;
+      }
+
+      h3 {
+        color: variables.$accent-color;
+        margin: .2rem 0;
+        text-align: center;
+      }
+
+      ul, ol {
+        color: variables.$text-color;
+        margin: .2rem 0;
+        font-weight: map-get(variables.$font-weights, bold);
+        margin: .5rem 0;
+      }
+
+      p {
+        text-align: center;
+        color: variables.$text-color;
+        font-weight: map-get(variables.$font-weights, bold);
+      }
+    }
+  }
 }
 
 footer {
@@ -117,7 +173,6 @@ footer {
   width: 100%;
   height: 5rem;
   background-color: variables.$bg-color;
-  bottom: 0;
 
   .rule {
     border: 1px solid variables.$primary-color;
@@ -130,9 +185,5 @@ footer {
     text-align: center;
     color: variables.$text-color;
     font-weight: map-get(variables.$font-weights, bold);
-  }
-
-  @media (min-width: 22.5rem) {
-    position: fixed;
   }
 }

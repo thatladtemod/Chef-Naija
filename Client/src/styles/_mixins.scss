@@ -7,6 +7,11 @@
     align-items: center;
 }
 
+@mixin grid-center {
+    display: grid;
+    place-items: center;
+}
+
 // Transition Mixin
 
 @mixin all-transition {

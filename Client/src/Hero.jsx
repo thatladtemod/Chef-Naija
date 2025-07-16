@@ -1,9 +1,4 @@
-export default function Hero() {
-  function getRecipe(formData) {
-    const delicacy = formData.get("delicacy");
-
-    return delicacy;
-  }
+export default function Hero(props) {
 
   return (
     <section className="hero">
@@ -14,7 +9,7 @@ export default function Hero() {
           dishes with step by step guidance from Chef Naija
         </p>
       </div>
-      <form action={getRecipe} className="form">
+      <form action={props.getRecipe} className="form">
         <input
           type="text"
           name="delicacy"
