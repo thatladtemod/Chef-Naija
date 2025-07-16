@@ -15,7 +15,7 @@ export default function App() {
 
     try {
       const response = await fetch(
-        `${import.meta.env.CHEF_NAIJA_BACKEND}/api/recipe`,
+        `${import.meta.env.VITE_CHEF_NAIJA}/api/recipe`,
         {
           method: "POST",
           headers: {
