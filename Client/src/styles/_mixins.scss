@@ -32,7 +32,24 @@
     0% {
         background-position: 0% 50%;
     }
+
     100% {
         background-position: 50% 100%;
+    }
+}
+
+@mixin typing-text {
+    animation: typing 1.2s infinite;
+}
+
+@keyframes typing {
+    0% {
+        content: ".";
+    }
+    50% {
+        content: "..";
+    }
+    100% {
+        content: "...";
     }
 }

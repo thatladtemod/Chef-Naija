@@ -6,12 +6,14 @@ import { useState } from "react"
 
 export default function App() {
   
-  const [recipe, setRecipe] = useState("");
+  const [recipe, setRecipe] = useState("Your recipe will appear here!");
   const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState(false)
 
   async function getRecipe(formData) {
+    console.log("testing")
     const delicacy = formData.get("delicacy");
-    setLoading(true)
+    setLoading(true);
 
     try {
       const response = await fetch(
@@ -25,37 +27,36 @@ export default function App() {
         }
       );
 
-      console.log(response)
+      console.log(response);
 
       const data = await response.json();
-      console.log("recieved:", data)
+      console.log("recieved:", data);
 
       // Update state to show the result
       if (data.recipe) {
         setRecipe(data.recipe);
-      }else {
-        setRecipe(data.error)
+      } else {
+        setRecipe(data.error);
       }
-    }
-    catch(error){
-      console.error("Something went wrong. Please, try again.", error)
-      setRecipe("Sorry, something went wrong.")
-    }
-    finally {
-      setLoading(false)
+    } catch (error) {
+      console.error("Something went wrong. Please, try again.", error);
+      setRecipe("Sorry, something went wrong.");
+    } finally {
+      setLoading(false);
+      setShow(false)
     }
   } 
   return (
     <>
       <Header />
       <main>
-        <Hero getRecipe={getRecipe}/>
-        {loading ? (
-          <p>Loading <span>...</span></p>
-        ) : (
-          recipe && <Recipe recipe={recipe}/>
-          )
-        }
+        <Hero getRecipe={getRecipe}
+          loading={loading}
+          show={show}
+        />
+        <Recipe recipe={recipe}
+          loading={loading}
+        />
       </main>
       <Footer />
     </>

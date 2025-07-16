@@ -1,5 +1,14 @@
 export default function Hero(props) {
 
+  function getRecipe(event) {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+
+    props.getRecipe(formData)
+
+    event.target.reset()
+  }
+
   return (
     <section className="hero">
       <div className="intro">
@@ -9,14 +18,18 @@ export default function Hero(props) {
           dishes with step by step guidance from Chef Naija
         </p>
       </div>
-      <form action={props.getRecipe} className="form">
+      <form onSubmit={getRecipe} className="form">
         <input
           type="text"
           name="delicacy"
           placeholder="What are we cooking today..."
           className="form-input"
         />
-        <button className="form-button">Get Recipe</button>
+        {props.loading ? (
+          < button className="form-button" disabled>Cooking... 🔥</button>
+        ) : (
+        < button className="form-button">Get Recipe 👨🏾‍🍳</button>
+        )}
       </form>
     </section>
   );

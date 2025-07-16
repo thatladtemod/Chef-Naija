@@ -1,4 +1,4 @@
-import logo from "../public/ChefNaija.png"
+import logo from "../../public/ChefNaija.png"
 
 export default function Header() {
 
