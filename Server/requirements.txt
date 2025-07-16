@@ -1,2 +1,5 @@
+Click
 Flask
+flask_cors
 gunicorn 
+Werkzeug
