@@ -144,8 +144,6 @@ main {
 
     &-container {
       @include mixins.flex-center;
-      // flex-shrink: 0;
-      // overflow: auto;
       flex-direction: column;
       width: 90%;
       background-color: darken(variables.$bg-color, 10%);
