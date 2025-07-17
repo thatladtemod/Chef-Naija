@@ -1,14 +1,13 @@
-import Header from "./Header"
-import Hero from "./Hero"
-import Footer from "./Footer"
-import Recipe from "./Recipe"
-import { useState } from "react"
+import Header from "./Header";
+import Hero from "./Hero";
+import Footer from "./Footer";
+import Recipe from "./Recipe";
+import { useState } from "react";
 
 export default function App() {
-  
   const [recipe, setRecipe] = useState("Your recipe will appear here!");
-  const [loading, setLoading] = useState(false)
-  const [show, setShow] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
 
   async function getRecipe(formData) {
     const delicacy = formData.get("delicacy");
@@ -37,26 +36,24 @@ export default function App() {
         setRecipe(data.error);
       }
     } catch (error) {
-      setRecipe(`Sorry, something went wrong. \n${error}`);
+      if (error) {
+        setRecipe(`Sorry, something went wrong.`);
+      }
     } finally {
       setLoading(false);
-      setShow(false)
+      setShow(false);
     }
-  } 
+  }
   return (
     <>
-      <Header />
-      <main>
-        <Hero getRecipe={getRecipe}
-          loading={loading}
-          show={show}
-        />
-        <Recipe recipe={recipe}
-          loading={loading}
-        />
-      </main>
-      <Footer />
+      <div className="wrapper">
+        <Header />
+        <main>
+          <Hero getRecipe={getRecipe} loading={loading} show={show} />
+          <Recipe recipe={recipe} loading={loading} />
+        </main>
+        <Footer />
+      </div>
     </>
-  )
+  );
 }
-

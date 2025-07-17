@@ -2,9 +2,18 @@
 @use "./mixins" as mixins;
 @import "./reset";
 
-body {
+html, body {
   font-family: variables.$font-family;
   width: 100vw;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
@@ -41,7 +50,7 @@ header {
     }
 
     &-name {
-      font-weight: map-get(variables.$font-weights, regular);
+      font-weight: map-get(variables.$font-weights, bold);
       color: variables.$text-color;
     }
   }
@@ -52,6 +61,7 @@ main {
   bottom: 3rem;
   margin: auto;
   padding: auto;
+  flex: 1;
 
   .hero {
     @include mixins.flex-center;
